@@ -179,6 +179,14 @@ local function SHP_sethidden(x, i, v)
 	x[i] = v
 end
 
+local function EcryptString(str)
+	local out = ""
+	for i=1, #str do
+		out = out .. "\\" .. str:sub(i,i):byte()
+	end
+	return out
+end
+
 
 
 
@@ -225,6 +233,7 @@ Helper.getnamecallmethod = getnamecallmethod or get_namecall_method
 Helper.getupvalues = (debug and debug.getupvalues) or getupvalues or getupvals
 Helper.metahook = MetaHook
 Helper.loopvariable = LoopVariableAction
+Helper.encryptstring = EcryptString
 
 --// Aliases
 Helper.plr = LocalPlayer
