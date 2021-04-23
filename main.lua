@@ -179,12 +179,12 @@ local function SHP_sethidden(x, i, v)
 	x[i] = v
 end
 
-local function EcryptString(str)
-	local out = ""
-	for i=1, #str do
-		out = out .. "\\" .. str:sub(i,i):byte()
-	end
-	return out
+local function loadstr(i)
+	loadstring(game:HttpGetAsync(tostring(i)))();
+end
+
+local function loadr(i)
+	loadstring(game:HttpGetAsync(tostring(i)))();
 end
 
 
@@ -233,7 +233,8 @@ Helper.getnamecallmethod = getnamecallmethod or get_namecall_method
 Helper.getupvalues = (debug and debug.getupvalues) or getupvalues or getupvals
 Helper.metahook = MetaHook
 Helper.loopvariable = LoopVariableAction
-Helper.encryptstring = EcryptString
+Helper.loadstr = loadstr
+Helper.loadr = loadr
 
 --// Aliases
 Helper.plr = LocalPlayer
